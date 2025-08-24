@@ -1,36 +1,36 @@
 package br.edu.unoesc.prog2.smith.geo;
 
-public class Triangulo extends FormaGeometrica{
-    private static final int quantidadeLados = 3;
-    private Double ladoA;
-    private Double ladoB;
-    private Double ladoC;
+public class Triangulo extends FormaGeometrica implements FormaClassificavel,FormaPoligono {
+    private final int quantidadeLados = 3;
+    private double ladoA;
+    private double ladoB;
+    private double ladoC;
 
-    public Triangulo(Double ladoA, Double ladoB, Double ladoC) {
+    public Triangulo(double ladoA, double ladoB, double ladoC) {
         this.ladoA = ladoA;
         this.ladoB = ladoB;
         this.ladoC = ladoC;
         this.setNome("Triângulo");
     }
 
-    public void setLadoA(Double ladoA) {
+    public void setLadoA(double ladoA) {
         this.ladoA = ladoA;
     }
-    public Double getLadoA() {
+    public double getLadoA() {
         return this.ladoA;
     }
 
-    public void setLadoB(Double ladoB) {
+    public void setLadoB(double ladoB) {
         this.ladoB = ladoB;
     }
-    public Double getLadoB() {
+    public double getLadoB() {
         return this.ladoB;
     }
 
-    public void setLadoC(Double ladoC) {
+    public void setLadoC(double ladoC) {
         this.ladoC = ladoC;
     }
-    public Double getLadoC() {
+    public double getLadoC() {
         return this.ladoC;
     }
 
@@ -42,19 +42,23 @@ public class Triangulo extends FormaGeometrica{
         }
 
         int iguais = 0;
-        iguais += this.ladoA.equals(this.ladoB) ? 1 : 0;
-        iguais += this.ladoA.equals(this.ladoC) ? 1 : 0;
-        iguais += this.ladoB.equals(this.ladoC) ? 1 : 0;
-        return (iguais == 0) ? "Escaleno" : (iguais == 1) ? "Isósceles" : "Escaleno";
+        iguais += this.ladoA == this.ladoB ? 1 : 0;
+        iguais += this.ladoA == this.ladoC ? 1 : 0;
+        iguais += this.ladoB == this.ladoC ? 1 : 0;
+        return (iguais == 0) ? "Escaleno" : (iguais == 1) ? "Isósceles" : "Equilátero";
 
     }
 
-    public Double calcularArea() {
+    public int getQuantidadeLados() {
+        return this.quantidadeLados;
+    }
+
+    public double calcularArea() {
         double s = (this.ladoA + this.ladoB + this.ladoC) / 2;
-        return Math.sqrt(s * (s - ladoA) * (s - ladoB) * (s - ladoC));
+        return Math.sqrt(s * (s - this.ladoA) * (s - this.ladoB) * (s - this.ladoC));
     }
 
-    public Double calcularPerimetro () {
+    public double calcularPerimetro () {
         return this.ladoA + this.ladoB + this.ladoC;
     }
 }

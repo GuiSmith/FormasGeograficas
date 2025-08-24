@@ -1,15 +1,19 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import br.edu.unoesc.prog2.smith.geo.*;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        FormaGeometrica[] formas = new FormaGeometrica[] {
+                new Retangulo(2.0,3.0),
+                new Triangulo(2.0,3.0,2.0),
+                new Circulo(2.0)
+        };
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        for (FormaGeometrica forma : formas) {
+            System.out.println("\nNome: " + forma.getNome());
+            System.out.println("Tipo: " + (forma instanceof FormaClassificavel fc ? fc.getTipo() : "Não aplicável"));
+            System.out.println("Quantidade de lados: " + (forma instanceof FormaPoligono fp ? fp.getQuantidadeLados() : "Não aplicável"));
+            System.out.println("Área: " + forma.calcularArea());
+            System.out.println("Perímetro: " + forma.calcularPerimetro());
         }
     }
 }

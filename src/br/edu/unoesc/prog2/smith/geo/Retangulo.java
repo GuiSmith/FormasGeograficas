@@ -1,43 +1,43 @@
 package br.edu.unoesc.prog2.smith.geo;
 
-public class Retangulo extends FormaGeometrica{
+public class Retangulo extends FormaGeometrica implements FormaPoligono {
     private static final int quantidadeLados = 4;
-    private Double altura;
-    private Double largura;
+    private double altura;
+    private double largura;
 
-    public Retangulo(Double altura, Double largura) {
+    public Retangulo(double altura, double largura) {
         this.altura = altura;
         this.largura = largura;
         this.setNome("Retângulo");
     }
 
-    public void setAltura(Double altura) {
+    public void setAltura(double altura) {
         this.altura = altura;
     }
 
-    public Double getAltura() {
+    public double getAltura() {
         return this.altura;
     }
 
-    public void setLargura(Double largura) {
+    public void setLargura(double largura) {
         this.largura = largura;
     }
 
-    public Double getLargura() {
+    public double getLargura() {
         return this.largura;
     }
 
-    public static int getLados() {
+    public int getQuantidadeLados() {
         return quantidadeLados;
     }
 
     @Override
-    public Double calcularArea() {
+    public double calcularArea() {
         return (this.altura*this.largura);
     }
 
     @Override
-    public Double calcularPerimetro() {
+    public double calcularPerimetro() {
         return (this.altura*2) + (this.largura*2);
     }
 }

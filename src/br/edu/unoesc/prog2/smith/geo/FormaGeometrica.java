@@ -18,6 +18,6 @@ public abstract class FormaGeometrica implements Forma {
         return this.cor;
     }
 
-    public abstract Double calcularArea();
-    public abstract Double calcularPerimetro();
+    public abstract double calcularArea();
+    public abstract double calcularPerimetro();
 }
